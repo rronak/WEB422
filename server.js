@@ -7,7 +7,7 @@
  * https://www.senecapolytechnic.ca/about/policies/academic-integrity-policy.html
  *
  * Name: Ronak Jung Rayamajhi         Student ID: 146857230      Date: 2025-05-26
- * Published URL: 
+ * Published URL: https://web422ronak.vercel.app
  ********************************************************************************/
 
 require("dotenv").config();
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
   res.json({ message: "API Listening" });
 });
 
-// Initialize DB and start server
+// Initialize DB server
 db.initialize(process.env.MONGODB_CONN_STRING)
   .then(() => {
     app.listen(HTTP_PORT, () => {
@@ -39,10 +39,7 @@ db.initialize(process.env.MONGODB_CONN_STRING)
     console.error(`Failed to connect to the database: ${err}`);
   });
 
-/**
- * POST /api/listings
- * Add a new listing
- */
+// POST /api/listings - Add a new listing
 app.post("/api/listings", async (req, res) => {
   try {
     const newListing = await db.addNewListing(req.body);
@@ -52,10 +49,7 @@ app.post("/api/listings", async (req, res) => {
   }
 });
 
-/**
- * GET /api/listings
- * Get all listings with pagination and optional name search
- */
+// GET /api/listings - Get all listings with pagination and optional name search
 app.get("/api/listings", async (req, res) => {
   const { page, perPage, name } = req.query;
 
@@ -67,10 +61,7 @@ app.get("/api/listings", async (req, res) => {
   }
 });
 
-/**
- * GET /api/listings/:id
- * Get a listing by ID
- */
+// GET /api/listings/:id - Get a listing by ID
 app.get("/api/listings/:id", async (req, res) => {
   try {
     const listing = await db.getListingById(req.params.id);
@@ -83,10 +74,7 @@ app.get("/api/listings/:id", async (req, res) => {
   }
 });
 
-/**
- * PUT /api/listings/:id
- * Update a listing by ID
- */
+// PUT /api/listings/:id - Update a listing by ID
 app.put("/api/listings/:id", async (req, res) => {
   try {
     const result = await db.updateListingById(req.body, req.params.id);
@@ -99,10 +87,7 @@ app.put("/api/listings/:id", async (req, res) => {
   }
 });
 
-/**
- * DELETE /api/listings/:id
- * Delete a listing by ID
- */
+// DELETE /api/listings/:id - Delete a listing by ID
 app.delete("/api/listings/:id", async (req, res) => {
   try {
     const result = await db.deleteListingById(req.params.id);
