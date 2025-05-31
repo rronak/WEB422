@@ -13,7 +13,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const ListingsDB = require("./modules/listingsDB");
+const ListingsDB = require("./asgm1/modules/listingsDB");
 
 const app = express();
 const HTTP_PORT = process.env.PORT || 8080;
