@@ -8,6 +8,8 @@
 - **Date**: 2025-05-31
 - **GitHub Repository**: https://github.com/rronak/WEB422 (First assignment)
 
+## About
+
 This project is a front-end client for displaying Airbnb listings using the API built in Assignment 1.  
 It includes the following features:
 
